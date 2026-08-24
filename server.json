@@ -1,0 +1,12 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
+  "name": "ai.paidsync/google-ads-mcp",
+  "description": "Run Google Ads through AI. 133 typed tools, full write access, native MCC routing.",
+  "version": "1.0.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.paidsync.ai/mcp"
+    }
+  ]
+}

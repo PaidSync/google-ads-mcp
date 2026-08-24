@@ -1,6 +1,6 @@
 # Google Ads MCP
 
-A Model Context Protocol (MCP) server that lets AI assistants (Claude, ChatGPT, Gemini, Cursor, Perplexity, or any MCP client) run Google Ads end to end. 136 typed tools with full write access, native MCC manager-account routing, approval-gated writes, and 12 more ad and measurement platforms in the same session.
+A Model Context Protocol (MCP) server that lets AI assistants (Claude, ChatGPT, Gemini, Cursor, Perplexity, or any MCP client) run Google Ads end to end. 133 typed tools with full write access, native MCC manager-account routing, approval-gated writes, and 13 more ad and measurement platforms in the same session.
 
 **Hosted at [paidsync.ai](https://paidsync.ai). Free plan: 15 tasks a month, no card required.**
 
@@ -14,10 +14,10 @@ A Model Context Protocol (MCP) server that lets AI assistants (Claude, ChatGPT, 
 
 PaidSync's Google Ads MCP surface, exposed to any AI assistant that speaks the Model Context Protocol. The full product page lives at [paidsync.ai/google-ads-mcp](https://paidsync.ai/google-ads-mcp). This repository is the developer entry point: install commands, tool catalog, and links to the docs.
 
-Three properties that set this Google Ads MCP apart from every other option currently listed on mcpservers.org, mcp.so, and the AI Overview citations:
+Three properties that define this Google Ads MCP:
 
-1. **136 Google Ads tools with full write access.** Not a reporting-only reader. Campaigns, ad groups, keywords, negatives, Performance Max asset groups, bidding strategies, portfolio bidding, audiences, offline conversion imports, experiments, drafts, recommendations, and change history. Every write is a real Google Ads API call.
-2. **Native MCC (My Client Center) manager-account routing.** One PaidSync connection covers every child account under the manager. The assistant switches customer context per task. Google's official MCP reference exposes the API but leaves the routing UX to whoever extends it; other community servers are single-account only.
+1. **133 Google Ads tools with full write access.** Not a reporting-only reader. Campaigns, ad groups, keywords, negatives, Performance Max asset groups, bidding strategies, portfolio bidding, audiences, offline conversion imports, experiments, drafts, recommendations, and change history. Every write is a real Google Ads API call.
+2. **Native MCC (My Client Center) manager-account routing.** One PaidSync connection covers every child account under the manager. The assistant switches customer context per task, so one key serves the whole manager tree without a second connection per client.
 3. **Approval-gated writes with dry-run previews.** Every mutation is held for your confirmation in chat. Most write tools accept `dry_run` to return the exact planned change before touching the account. Destructive operations require an explicit second confirmation.
 
 ## Getting started (hosted, recommended)
@@ -46,7 +46,7 @@ Go to [claude.ai/settings/integrations](https://claude.ai/settings/integrations)
 
 ### ChatGPT
 
-Add PaidSync as a custom MCP connector in Settings then Beta features then Model Context Protocol. Use the same URL as above.
+Add PaidSync as a custom MCP connector in ChatGPT's connector settings, using the same URL as above. The exact menu path moves between ChatGPT releases, so follow [OpenAI's own MCP documentation](https://platform.openai.com/docs/mcp) if the option is not where you expect it.
 
 ### Gemini, Cursor, Windsurf, Perplexity, any MCP client
 
@@ -57,9 +57,21 @@ Same URL, same API key. Setup guides:
 - [Connect Google Ads to Perplexity](https://paidsync.ai/blog/connect-google-ads-to-perplexity)
 - [Connect Google Ads to Copilot](https://paidsync.ai/blog/connect-google-ads-to-copilot)
 
+## Examples
+
+Copy-paste configs and prompts live in [`examples/`](./examples).
+
+- [`examples/claude_desktop_config.json`](./examples/claude_desktop_config.json), Claude Desktop MCP config
+- [`examples/claude_code.md`](./examples/claude_code.md), the exact `claude mcp add` command and how to verify it
+- [`examples/cursor_mcp.json`](./examples/cursor_mcp.json), Cursor `.cursor/mcp.json`
+- [`examples/windsurf_mcp_config.json`](./examples/windsurf_mcp_config.json), Windsurf `mcp_config.json`
+- [`examples/prompts.md`](./examples/prompts.md), 15 paste-ready Google Ads prompts mapped to the tool names below
+
+Machine-readable install steps for an AI agent are in [`llms-install.md`](./llms-install.md). How to report a tool bug or request a tool is in [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+
 ## First call
 
-Once connected, PaidSync exposes two meta-tools that keep client context small even with a 430-tool catalog:
+Once connected, PaidSync exposes two meta-tools that keep client context small even with a 460+ tool catalog:
 
 ```
 paidsync_context({ include_tools: ['google_ads'] })
@@ -94,16 +106,38 @@ Runs any tool by name. The assistant handles the two-call pattern automatically;
 
 Full live catalog with argument signatures is returned by `paidsync_context({ include_tools: ['google_ads'] })`.
 
+## The other 13 platforms in the same session
+
+One PaidSync key covers Google Ads plus 13 more platforms, so the assistant can compare channels and act on them without a second server.
+
+| Platform | Tools |
+|---|---:|
+| Meta Ads (Facebook + Instagram) | 82 |
+| Google Tag Manager | 39 |
+| ChatGPT Ads (OpenAI) | 28 |
+| Google Analytics 4 | 26 |
+| LinkedIn Ads | 25 |
+| Merchant Center | 16 |
+| Microsoft Ads | 15 |
+| Snapchat Ads | 15 |
+| Pinterest Ads | 14 |
+| Reddit Ads | 14 |
+| X Ads | 14 |
+| TikTok Ads | 13 |
+| Search Console | 6 |
+
+460+ tools across 14 platforms on one endpoint. The counts above are a snapshot, last synced 2026-08-24. The live source is `paidsync_context({ include_tools: '*' })`, which is what to trust if the two disagree.
+
 ## Pricing
 
 | Plan | Price | Tasks | Notes |
 |---|---|---|---|
-| Free | $0/mo | 15 | No card required, all 13 platforms |
+| Free | $0/mo | 15 | No card required, all 14 platforms |
 | Pro | From $99/mo | 600 to 4,000 | Solo operators and small teams |
-| Team | From $249/mo | 6,000 shared | 5 seats included, MCC-friendly |
+| Team | From $249/mo | 6,000 shared, 5 seats | Shared across the team, MCC-friendly |
 | Done For You | Custom | Managed | PaidSync runs the accounts |
 
-Every plan includes all 13 platforms and every MCC-linked child account. No per-account or per-platform charges. Every tool call counts as one task.
+Every plan includes all 14 platforms and every MCC-linked child account. No per-account or per-platform charges. Every tool call counts as one task.
 
 ## Safety model
 
@@ -125,20 +159,20 @@ PaidSync publishes the current agent-discovery surface at [paidsync.ai](https://
 - `/llms.txt`, `/llms-full.txt`, `/AGENTS.md`
 - Content-Signal directive in `/robots.txt`
 
-## Compared with other Google Ads MCP options
+## What you get, at a glance
 
-| | PaidSync | Google official MCP | cohnen/mcp-google-ads | AdKit |
-|---|---|---|---|---|
-| Google Ads tools | 136 | API surface (build it) | Reporting-focused subset | Subset of 23 total |
-| Write access | Full, gated | You implement it | Read-focused | Yes, ungated |
-| MCC manager-account routing | Yes, native | API supports it, no UX | Single account | Not listed |
-| Approval gates on writes | Yes | You implement it | Not applicable | No, applies immediately |
-| Hosted vs self-hosted | Hosted | Self-hosted | Self-hosted | Hosted |
-| Platform scope in same session | 13 platforms | Google Ads only | Google Ads only | Google, Meta, LinkedIn |
-| Google Partner | Google Premier (top 3% globally) | Google, first party | Not applicable | Not listed |
-| Price | Free $0 to $99+/mo | Free, API quota | Free, self-hosted | $29 to $49/year |
+| | PaidSync |
+|---|---|
+| Google Ads tools | 133 |
+| Write access | Full, approval-gated |
+| MCC manager-account routing | Yes, native |
+| Approval gates on writes | Yes, server side |
+| Hosted vs self-hosted | Hosted |
+| Platform scope in same session | 14 platforms |
+| Google Partner | Google Premier Partner |
+| Price | Free $0/mo, Pro from $99/mo, Team from $249/mo |
 
-Full comparison at [paidsync.ai/vs/google-ads-mcp](https://paidsync.ai/vs/google-ads-mcp).
+Head-to-head comparisons against other Google Ads MCP options live at [paidsync.ai/vs/google-ads-mcp](https://paidsync.ai/vs/google-ads-mcp), where they carry a check date. Other people's tool counts, prices, and feature gaps change week to week, so they are maintained there rather than hardcoded in this repo.
 
 ## License
 
@@ -153,4 +187,4 @@ MIT. See [LICENSE](./LICENSE).
 - Head-to-head: [PaidSync vs official Google Ads MCP](https://paidsync.ai/vs/google-ads-mcp)
 - Support: support@paidsync.ai
 
-Built by [Ahmed Ashraf](https://paidsync.ai/about/ahmed-ashraf), Google Premier Partner (top 3% globally), $500M+ in managed ad spend.
+Built by [Ahmed Ashraf](https://paidsync.ai/about/ahmed-ashraf), Google Premier Partner.
