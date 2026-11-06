@@ -32,17 +32,17 @@ Add this to your Claude Desktop MCP configuration:
 {
   "mcpServers": {
     "paidsync": {
-      "url": "https://mcp.paidsync.ai/mcp?key=YOUR_API_KEY"
+      "url": "https://mcp.paidsync.ai/mcp"
     }
   }
 }
 ```
 
-Get your API key at [paidsync.ai/signup](https://paidsync.ai/signup?plan=free). Free plan is 100 tasks a month, no card required.
+No API key is needed: sign in when your client asks. Start free at [paidsync.ai/signup](https://paidsync.ai/signup?plan=free), 100 tasks a month, no card required.
 
 ### claude.ai (web) and Claude Code
 
-Go to [claude.ai/settings/integrations](https://claude.ai/settings/integrations) and add a custom MCP integration with URL `https://mcp.paidsync.ai/mcp?key=YOUR_API_KEY`. Same URL works in Claude Code via `claude mcp add paidsync ...`.
+Go to [claude.ai/settings/integrations](https://claude.ai/settings/integrations) and add a custom MCP integration with URL `https://mcp.paidsync.ai/mcp` and sign in. Same URL works in Claude Code via `claude mcp add paidsync ...`.
 
 ### ChatGPT
 
@@ -50,7 +50,7 @@ Add PaidSync as a custom MCP connector in ChatGPT's connector settings, using th
 
 ### Gemini, Cursor, Windsurf, Perplexity, any MCP client
 
-Same URL, same API key. Setup guides:
+Same URL, same sign-in. Setup guides:
 - [Connect Google Ads to Claude](https://paidsync.ai/blog/connect-google-ads-to-claude)
 - [Connect Google Ads to ChatGPT](https://paidsync.ai/blog/connect-google-ads-to-chatgpt)
 - [Connect Google Ads to Gemini](https://paidsync.ai/blog/connect-google-ads-to-gemini)
@@ -137,7 +137,7 @@ One PaidSync key covers Google Ads plus 13 more platforms, so the assistant can 
 | Team | From $249/mo | 10,000 shared, up to 20 seats | Shared across the team, MCC-friendly |
 | Done For You | Custom | Managed | PaidSync runs the accounts |
 
-Every plan includes all 14 platforms and every MCC-linked child account. No per-account or per-platform charges. Every tool call counts as one task.
+Every plan includes all 14 platforms; MCC and Business Manager support start on Pro. No per-account or per-platform charges. Every tool call counts as one task.
 
 ## Safety model
 
