@@ -1,12 +1,12 @@
 # Google Ads MCP
 
-A Model Context Protocol (MCP) server that lets AI assistants (Claude, ChatGPT, Gemini, Cursor, Perplexity, or any MCP client) run Google Ads end to end. 133 typed tools with full write access, native MCC manager-account routing, approval-gated writes, and 13 more ad and measurement platforms in the same session.
+A Model Context Protocol (MCP) server that lets AI assistants (Claude, ChatGPT, Gemini, Cursor, Perplexity, or any MCP client) run Google Ads end to end. 158 typed tools with full write access, native MCC manager-account routing, approval-gated writes, and 13 more ad and measurement platforms in the same session.
 
-**Hosted at [paidsync.ai](https://paidsync.ai). Free plan: 15 tasks a month, no card required.**
+**Hosted at [paidsync.ai](https://paidsync.ai). Free plan: 100 tasks a month, no card required.**
 
 [![MCP](https://img.shields.io/badge/MCP-server-black?logo=anthropic&logoColor=white)](https://modelcontextprotocol.io)
 [![Hosted](https://img.shields.io/badge/hosted-paidsync.ai-0077B6)](https://paidsync.ai/google-ads-mcp)
-[![Free plan](https://img.shields.io/badge/free%20plan-15%20tasks%2Fmo-7CB518)](https://paidsync.ai/signup?plan=free)
+[![Free plan](https://img.shields.io/badge/free%20plan-100%20tasks%2Fmo-7CB518)](https://paidsync.ai/signup?plan=free)
 [![Google Partner](https://img.shields.io/badge/Google-Premier%20Partner-4285F4?logo=google)](https://www.google.com/partners/agency?id=7427374971)
 [![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 
@@ -16,7 +16,7 @@ PaidSync's Google Ads MCP surface, exposed to any AI assistant that speaks the M
 
 Three properties that define this Google Ads MCP:
 
-1. **133 Google Ads tools with full write access.** Not a reporting-only reader. Campaigns, ad groups, keywords, negatives, Performance Max asset groups, bidding strategies, portfolio bidding, audiences, offline conversion imports, experiments, drafts, recommendations, and change history. Every write is a real Google Ads API call.
+1. **158 Google Ads tools with full write access.** Not a reporting-only reader. Campaigns, ad groups, keywords, negatives, Performance Max asset groups, bidding strategies, portfolio bidding, audiences, offline conversion imports, experiments, drafts, recommendations, and change history. Every write is a real Google Ads API call.
 2. **Native MCC (My Client Center) manager-account routing.** One PaidSync connection covers every child account under the manager. The assistant switches customer context per task, so one key serves the whole manager tree without a second connection per client.
 3. **Approval-gated writes with dry-run previews.** Every mutation is held for your confirmation in chat. Most write tools accept `dry_run` to return the exact planned change before touching the account. Destructive operations require an explicit second confirmation.
 
@@ -38,7 +38,7 @@ Add this to your Claude Desktop MCP configuration:
 }
 ```
 
-Get your API key at [paidsync.ai/signup](https://paidsync.ai/signup?plan=free). Free plan is 15 tasks a month, no card required.
+Get your API key at [paidsync.ai/signup](https://paidsync.ai/signup?plan=free). Free plan is 100 tasks a month, no card required.
 
 ### claude.ai (web) and Claude Code
 
@@ -71,7 +71,7 @@ Machine-readable install steps for an AI agent are in [`llms-install.md`](./llms
 
 ## First call
 
-Once connected, PaidSync exposes two meta-tools that keep client context small even with a 460+ tool catalog:
+Once connected, PaidSync exposes two meta-tools that keep client context small even with a 630+ tool catalog:
 
 ```
 paidsync_context({ include_tools: ['google_ads'] })
@@ -112,29 +112,29 @@ One PaidSync key covers Google Ads plus 13 more platforms, so the assistant can 
 
 | Platform | Tools |
 |---|---:|
-| Meta Ads (Facebook + Instagram) | 82 |
+| Microsoft Ads | 156 |
+| Meta Ads (Facebook + Instagram) | 92 |
 | Google Tag Manager | 39 |
+| LinkedIn Ads | 34 |
 | ChatGPT Ads (OpenAI) | 28 |
 | Google Analytics 4 | 26 |
-| LinkedIn Ads | 25 |
+| TikTok Ads | 24 |
 | Merchant Center | 16 |
-| Microsoft Ads | 15 |
 | Snapchat Ads | 15 |
 | Pinterest Ads | 14 |
 | Reddit Ads | 14 |
 | X Ads | 14 |
-| TikTok Ads | 13 |
 | Search Console | 6 |
 
-460+ tools across 14 platforms on one endpoint. The counts above are a snapshot, last synced 2026-08-24. The live source is `paidsync_context({ include_tools: '*' })`, which is what to trust if the two disagree.
+630+ tools across 14 platforms on one endpoint. The counts above are a snapshot, last synced 2026-11-06. The live source is `paidsync_context({ include_tools: '*' })`, which is what to trust if the two disagree.
 
 ## Pricing
 
 | Plan | Price | Tasks | Notes |
 |---|---|---|---|
-| Free | $0/mo | 15 | No card required, all 14 platforms |
-| Pro | From $99/mo | 600 to 4,000 | Solo operators and small teams |
-| Team | From $249/mo | 6,000 shared, 5 seats | Shared across the team, MCC-friendly |
+| Free | $0/mo | 100 | No card required, all 14 platforms |
+| Pro | From $99/mo | 1,000 to 6,000 | Solo operators and small teams |
+| Team | From $249/mo | 10,000 shared, up to 20 seats | Shared across the team, MCC-friendly |
 | Done For You | Custom | Managed | PaidSync runs the accounts |
 
 Every plan includes all 14 platforms and every MCC-linked child account. No per-account or per-platform charges. Every tool call counts as one task.
@@ -163,7 +163,7 @@ PaidSync publishes the current agent-discovery surface at [paidsync.ai](https://
 
 | | PaidSync |
 |---|---|
-| Google Ads tools | 133 |
+| Google Ads tools | 158 |
 | Write access | Full, approval-gated |
 | MCC manager-account routing | Yes, native |
 | Approval gates on writes | Yes, server side |
